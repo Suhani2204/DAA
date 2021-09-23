@@ -14,22 +14,22 @@ int main()
         cin>>a[i];
         int comp=0;
         int shift=0;
-        for(i=1;i<n;i++)
+        for(i=0;i<n-1;i++)
         {
-            int curr=a[i];
-            j=i-1;
-            while(a[j]>curr&&j>=0)
+            for(j=i+1;j<n;j++)
             {
+                if(a[j]<a[i])
+                {
+                    int t=a[i];
+                    a[i]=a[j];
+                    a[j]=t;comp++;shift++;
+                }
                 comp++;
-                a[j+1]=a[j];
-                shift++;
-                j--;
             }
-            comp++;
-            a[j+1]=curr;
         }
-        for(i=0;i<n;i++)
+         for(i=0;i<n;i++)
         cout<<a[i]<<" ";
         cout<<"\n"<<comp<<" "<<shift;
+    
     }
 }
